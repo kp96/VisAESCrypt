@@ -2,7 +2,7 @@
 # @Author: Krishna
 # @Date:   2016-03-13 14:41:06
 # @Last Modified by:   Krishna
-# @Last Modified time: 2016-03-14 22:26:51
+# @Last Modified time: 2016-03-14 22:45:16
 import base64
 import hashlib
 from AESCipher import AESCipher
@@ -45,6 +45,6 @@ class Encrypter:
 					share2pix[j, i] = 0
 				else:
 					share2pix[j, i] = 255
-		output = [share1, share2]
+		output = [share1, share2, cipher]
 		return output
 
