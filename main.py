@@ -1,5 +1,5 @@
 from Encrypter import Encrypter
-from PIL import Image
+from PIL import Image as Img
 from Tkinter import *
 
 
@@ -30,7 +30,7 @@ def callback():
 	output[0].save("share1.png")
 	output[1].save("share2.png")
 	size = 255, 13
-	final = PIL.Image.new("1", size)
+	final = Img.new("1", size)
 	pix = final.load()
 	op1 = output[0].load()
 	op2 = output[1].load()

@@ -2,7 +2,7 @@
 # @Author: Krishna
 # @Date:   2016-03-13 14:41:06
 # @Last Modified by:   Krishna
-# @Last Modified time: 2016-03-13 16:30:26
+# @Last Modified time: 2016-03-14 22:26:51
 import base64
 import hashlib
 from AESCipher import AESCipher
@@ -29,6 +29,7 @@ class Encrypter:
 		for i in range(len(self.key)):
 			for j in range(ord(self.key[i])):
 				pix[j, i] = 0
+		im.save("original.png")
 		share1 = Image.new("1", size, "white")
 		share1pix = share1.load()
 		for i in range(len(self.key)):
@@ -41,15 +42,9 @@ class Encrypter:
 		for i in range(len(self.key)):
 			for j in range(255):
 				if pix[j, i] == share1pix[j, i]:
-					if pix[j, i] == 255:
-						#print "yo"
-						share2pix[j, i] = 0
-					else:
-						#print "bitch"
-						share2pix[j, i] = 255
+					share2pix[j, i] = 0
 				else:
-					#print "anta"
-					share2pix[j, i] = share1pix[j, i]
+					share2pix[j, i] = 255
 		output = [share1, share2]
 		return output
 
