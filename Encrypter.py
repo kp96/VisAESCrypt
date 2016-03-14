@@ -40,16 +40,7 @@ class Encrypter:
 		share2pix = share2.load()
 		for i in range(len(self.key)):
 			for j in range(255):
-				if pix[j, i] == share1pix[j, i]:
-					if pix[j, i] == 255:
-						#print "yo"
-						share2pix[j, i] = 0
-					else:
-						#print "bitch"
-						share2pix[j, i] = 255
-				else:
-					#print "anta"
-					share2pix[j, i] = share1pix[j, i]
+				share2pix[j, i] = share1pix[j, i] ^ pix[j, i]
 		output = [share1, share2]
 		return output
 

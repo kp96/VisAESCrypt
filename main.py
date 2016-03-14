@@ -1,8 +1,6 @@
 from Encrypter import Encrypter
 from PIL import Image
 from Tkinter import *
-
-
 master = Tk()
 master.wm_title("Visual Cryptograpy")
 l1=Label(master, text="Message")
@@ -12,20 +10,17 @@ l1.pack()
 e1 = Entry(master)
 e1.pack()
 e1.focus_set()
-
-
 l2.pack()
 e2 = Entry(master)
 e2.pack()
 e2.focus_set()
 
-
 label = Label (master, text="")
 label.pack()
 def callback():
-	result=e1.get()
-	result1=e2.get()
-	x = Encrypter(result, result1,  2)
+	myMessage=e1.get()
+	myKey=e2.get()
+	x = Encrypter(myMessage, myKey,  2)
 	output = x.generate_splits()
 	output[0].save("share1.png")
 	output[1].save("share2.png")
