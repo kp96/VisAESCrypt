@@ -29,7 +29,7 @@ class Encrypter:
 		for i in range(len(self.key)):
 			for j in range(ord(self.key[i])):
 				pix[j, i] = 0
-		im.save("original.png")
+		im.save("original.gif")
 		share1 = Image.new("1", size, "white")
 		share1pix = share1.load()
 		for i in range(len(self.key)):
