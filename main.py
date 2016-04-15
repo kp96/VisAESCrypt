@@ -2,30 +2,46 @@ from Encrypter import Encrypter
 from PIL import Image as Img
 from PIL import ImageTk as ImgTk
 from Tkinter import *
+import base64
+from Crypto.Cipher import AES
+import os
+import Tkinter,tkFileDialog
+
+
 master = Tk()
 master.wm_title("Visual Cryptography")
-l1=Label(master, text="Message")
+
+#l1=Label(master, text="Message")
 l2=Label(master, text="Key")
 
-l1.pack()
-e1 = Entry(master)
-e1.pack()
-e1.focus_set()
+
+
+#l1.pack()
+#e1 = Entry(master)
+#e1.pack()
+#e1.focus_set()
 l2.pack()
 e2 = Entry(master)
 e2.pack()
 e2.focus_set()
 
+#bg_image=ImgTk.PhotoImage(file="bgimg.gif")
+#bg_label =Label(master, image=bg_image)
+#bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+
 label = Label (master, text="")
 label.pack()
 def callback():
-	myMessage=e1.get()
+	file = tkFileDialog.askopenfile(parent=master,mode='rb',title='Choose a file')
+	if file != None:
+		data = file.read()
+		str = base64.b64encode(data)
 	myKey=e2.get()
-	x = Encrypter(myMessage, myKey,  2)
+	x = Encrypter(str, myKey,  2)
 	output = x.generate_splits()
 	l3=Label(master, text="Share1")
 	l4=Label(master, text="Share2")
-	l5=Label(master, text="Original Image")
+	l5=Label(master, text="Encrypted Key Image")
 	tk1 = ImgTk.PhotoImage(output[0])
 	tk2 = ImgTk.PhotoImage(output[1])
 	l3.pack()
