@@ -35,9 +35,9 @@ def callback():
 	file = tkFileDialog.askopenfile(parent=master,mode='rb',title='Choose a file')
 	if file != None:
 		data = file.read()
-		str = base64.b64encode(data)
+		stri = base64.b64encode(data)
 	myKey=e2.get()
-	x = Encrypter(str, myKey,  2)
+	x = Encrypter(stri, myKey,  2)
 	output = x.generate_splits()
 	l3=Label(master, text="Share1")
 	l4=Label(master, text="Share2")

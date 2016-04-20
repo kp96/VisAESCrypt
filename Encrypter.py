@@ -2,10 +2,11 @@
 # @Author: Krishna
 # @Date:   2016-03-13 14:41:06
 # @Last Modified by:   Krishna
-# @Last Modified time: 2016-03-14 22:45:16
+# @Last Modified time: 2016-04-20 12:18:48
 import base64
 import hashlib
 from AESCipher import AESCipher
+from Decrypter import Decrypter
 from PIL import Image
 from random import randint
 class Encrypter:
@@ -20,9 +21,7 @@ class Encrypter:
 	def generate_splits(self):
 		aes = AESCipher(self.key)
 		cipher = aes.encrypt(self.text)
-		print cipher
 		message = aes.decrypt(cipher)
-		print message
 		size = 255, len(self.key)
 		im = Image.new("1", size, "white")
 		pix =  im.load()
@@ -46,5 +45,7 @@ class Encrypter:
 				else:
 					share2pix[j, i] = 255
 		output = [share1, share2, cipher]
+		x = Decrypter(cipher, [share1, share2])
+		x.decrypt_image()
 		return output
 
